@@ -27,7 +27,6 @@
 
     MemberDAO memberDAO = new MemberDAO();
     memberDAO.updateMember(memberbean);
-    System.out.println(memberbean);
 
     response.sendRedirect("index.jsp?id=" + id);
 %>
