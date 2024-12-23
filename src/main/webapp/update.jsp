@@ -59,18 +59,18 @@
     <div id="main">
         <div id="id">
             <label id="labeltxt">Email <label id="redstar">*</label></label>
-            <input type="email" style="width: 250px;" value="<%=memberBean.getEmail()%>">
+            <input type="email" name="email" style="width: 250px;" value="<%=memberBean.getEmail()%>">
         </div>
 
         <div id="id">
             <label id="labeltxt">우편번호 </label>
-            <input type="text" style="width: 250px;" id="zipcode" value="<%=memberBean.getZipcode()%>">
+            <input type="text" name="zipcode" style="width: 250px;" id="zipcode" value="<%=memberBean.getZipcode()%>">
             <input type="button" onclick="findadr()" class="btn btn-primary btn-sm" value="우편번호 찾기">
         </div>
 
         <div id="id">
             <label id="labeltxt">주소 </label>
-            <input type="text" style="width: 250px;" id="addr" value="<%=memberBean.getAddress()%>">
+            <input type="text" name="address" style="width: 250px;" id="addr" value="<%=memberBean.getAddress()%>">
         </div>
 
         <div id="id">
