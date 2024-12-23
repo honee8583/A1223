@@ -68,7 +68,7 @@ public class MemberDAO {
         conn = DBConnectionDAO.getConnection();
 
         try {
-            String sql = "update member set email=?, zipcode=?, address=?, hobby=?, job=? where id=?";
+            String sql = "update Member set email=?, zipcode=?, address=?, hobby=?, job=? where id=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, memberBean.getEmail());
             pstmt.setString(2, memberBean.getZipcode());
