@@ -18,7 +18,7 @@
             justify-content: center;
             height: 50vh;
 
-            border: 2px solid skyblue;
+            border: 2px solid lightgrey;
             border-radius: 20px;
             width: 500px;
             padding: 50px 30px;
@@ -41,18 +41,18 @@
     </style>
 </head>
 <body>
-<form>
+<form action="joinProc.jsp" method="post">
     <h2>회원가입</h2>
     <div id="main">
         <div id="id">
             <label id="labeltxt">아이디 <label id="redstar">*</label></label>
-            <input type="text" id="inputtxt" style="width: 250px;">
+            <input type="text" name="id" id="inputtxt" style="width: 250px;">
             <input type="button" onclick="dbcheck()" value="ID 중복확인">
         </div>
 
         <div id="id">
             <label id="labeltxt">비밀번호 <label id="redstar">*</label></label>
-            <input type="password" style="width: 250px;">
+            <input type="password" name="password" style="width: 250px;">
         </div>
 
         <div id="id">
@@ -62,43 +62,43 @@
 
         <div id="id">
             <label id="labeltxt">이름 <label id="redstar">*</label></label>
-            <input type="text" style="width: 250px;">
+            <input type="text" name="name" style="width: 250px;">
         </div>
 
         <div id="id">
             <label id="labeltxt">성별 <label id="redstar">*</label></label>
-            <input type="radio" name="gender">남자
-            <input type="radio" name="gender">여자
-        </div>
-
-        <div id="id">
-            <label id="labeltxt">생년월일 <label id="redstar">*</label></label>
-            <input type="text" style="width: 160px;"> Ex) 951030
+            <input type="radio" name="gender" value="M">남자
+            <input type="radio" name="gender" value="F">여자
         </div>
 
         <div id="id">
             <label id="labeltxt">Email <label id="redstar">*</label></label>
-            <input type="email" style="width: 250px;">
+            <input type="email" name="email" style="width: 250px;">
+        </div>
+
+        <div id="id">
+            <label id="labeltxt">생년월일 <label id="redstar">*</label></label>
+            <input type="text" name="birth" style="width: 160px;"> Ex) 951030
         </div>
 
         <div id="id">
             <label id="labeltxt">우편번호 </label>
-            <input type="text" style="width: 250px;">
+            <input type="text" name="zipcode" style="width: 250px;">
             <input type="button" onclick="findadr()" value="우편번호 찾기">
         </div>
 
         <div id="id">
             <label id="labeltxt">주소 </label>
-            <input type="text" style="width: 250px;">
+            <input type="text" name="address" style="width: 250px;">
         </div>
 
         <div id="id">
             <label id="labeltxt">취미 </label>
-            <input type="checkbox" name="hobby">쇼핑
-            <input type="checkbox" name="hobby">여행
-            <input type="checkbox" name="hobby">게임
-            <input type="checkbox" name="hobby">영화
-            <input type="checkbox" name="hobby">운동
+            <input type="checkbox" name="hobby" value = "shopping">쇼핑
+            <input type="checkbox" name="hobby" value = "traval">여행
+            <input type="checkbox" name="hobby" value = "game">게임
+            <input type="checkbox" name="hobby" value = "movie">영화
+            <input type="checkbox" name="hobby" value = "exersice">운동
         </div>
 
         <div id="id">
@@ -138,7 +138,7 @@
         </div>
         <div id="btn">
             <input type="submit" value="회원가입">
-            <input type="reset" value="다시 작성">
+            <input type="button" onclick="location.href='index.jsp'" value="취소">
         </div>
     </div>
 </form>

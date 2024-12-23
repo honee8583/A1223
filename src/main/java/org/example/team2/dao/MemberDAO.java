@@ -16,7 +16,7 @@ public class MemberDAO {
     public void insertMember(MemberBean memberBean) {
         conn = DBConnectionDAO.getConnection();
         try {
-            String sql = "insert into member values(?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into Member values(?,?,?,?,?,?,?,?,?,?)";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, memberBean.getId());
             pstmt.setString(2, memberBean.getPassword());
@@ -41,7 +41,7 @@ public class MemberDAO {
         MemberBean memberBean = new MemberBean();
 
         try {
-            String sql = "select * from member where id = ?";
+            String sql = "select * from Member where id = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             rs = pstmt.executeQuery();
@@ -50,7 +50,7 @@ public class MemberDAO {
                 memberBean.setId(rs.getString("id"));
                 memberBean.setPassword(rs.getString("password"));
                 memberBean.setName(rs.getString("name"));
-                memberBean.setGender((Character) rs.getObject("gender"));
+                memberBean.setGender(String.valueOf(rs.getObject("gender")).charAt(0));
                 memberBean.setEmail(rs.getString("email"));
                 memberBean.setBirth(rs.getString("birth"));
                 memberBean.setZipcode(rs.getString("zipcode"));
@@ -69,12 +69,14 @@ public class MemberDAO {
         conn = DBConnectionDAO.getConnection();
 
         try {
-            String sql = "update member set password=?, email=?, zipcode=?, address=? where id=?";
+            String sql = "update Member set email=?, zipcode=?, address=?, hobby=?, job=? where id=?";
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, memberBean.getPassword());
-            pstmt.setString(2, memberBean.getEmail());
-            pstmt.setString(4, memberBean.getZipcode());
-            pstmt.setString(5, memberBean.getId());
+            pstmt.setString(1, memberBean.getEmail());
+            pstmt.setString(2, memberBean.getZipcode());
+            pstmt.setString(3, memberBean.getAddress());
+            pstmt.setString(4, memberBean.getHobby());
+            pstmt.setString(5, memberBean.getJob());
+            pstmt.setString(6, memberBean.getId());
             pstmt.executeUpdate();
             DBConnectionDAO.closeConnection(conn, pstmt);
         } catch (Exception e) {
@@ -86,7 +88,7 @@ public class MemberDAO {
         conn = DBConnectionDAO.getConnection();
 
         try {
-            String sql = "delete from member where id = ?";
+            String sql = "delete from Member where id = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             pstmt.executeUpdate();
@@ -95,7 +97,6 @@ public class MemberDAO {
             e.printStackTrace();
         }
     }
-
 
     public MemberBean useLogin(String id, String password) {
         conn = DBConnectionDAO.getConnection();
@@ -129,6 +130,21 @@ public class MemberDAO {
 
         // 로그인 실패 시 null 반환
         return null;
+
+
+    public void updatePwd(String id, String password) {
+        conn = DBConnectionDAO.getConnection();
+        String sql = "update Member set password = ? where id = ?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, password);
+            pstmt.setString(2, id);
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBConnectionDAO.closeConnection(conn, pstmt);
+        }
 
     }
 
