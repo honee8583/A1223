@@ -15,7 +15,7 @@ public class MemberDAO {
     public void insertMember(MemberBean memberBean) {
         conn = DBConnectionDAO.getConnection();
         try {
-            String sql = "insert into member values(?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into Member values(?,?,?,?,?,?,?,?,?,?)";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, memberBean.getId());
             pstmt.setString(2, memberBean.getPassword());
@@ -27,6 +27,7 @@ public class MemberDAO {
             pstmt.setString(8, memberBean.getAddress());
             pstmt.setString(9, memberBean.getHobby());
             pstmt.setString(10, memberBean.getJob());
+
             pstmt.executeUpdate();
 
             DBConnectionDAO.closeConnection(conn, pstmt);

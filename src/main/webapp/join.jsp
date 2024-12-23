@@ -46,23 +46,23 @@
     <div id="main">
         <div id="id">
             <label id="labeltxt">아이디 <label id="redstar">*</label></label>
-            <input type="text" id="inputtxt" style="width: 250px;">
+            <input type="text" name="id" id="inputtxt" style="width: 250px;">
             <input type="button" onclick="dbcheck()" value="ID 중복확인">
         </div>
 
         <div id="id">
             <label id="labeltxt">비밀번호 <label id="redstar">*</label></label>
-            <input type="password" style="width: 250px;">
+            <input type="password" name="password" style="width: 250px;">
         </div>
 
         <div id="id">
             <label id="labeltxt">비밀번호 확인 <label id="redstar">*</label></label>
-            <input type="password" style="width: 250px;">
+            <input type="password" name="password_confirm" style="width: 250px;">
         </div>
 
         <div id="id">
             <label id="labeltxt">이름 <label id="redstar">*</label></label>
-            <input type="text" style="width: 250px;">
+            <input type="text" name="name" style="width: 250px;">
         </div>
 
         <div id="id">
@@ -73,23 +73,23 @@
 
         <div id="id">
             <label id="labeltxt">Email <label id="redstar">*</label></label>
-            <input type="email" style="width: 250px;">
+            <input type="email" name="email" style="width: 250px;">
         </div>
 
         <div id="id">
             <label id="labeltxt">생년월일 <label id="redstar">*</label></label>
-            <input type="text" style="width: 160px;"> Ex) 951030
+            <input type="text" name="birth" style="width: 160px;"> Ex) 951030
         </div>
 
         <div id="id">
             <label id="labeltxt">우편번호 </label>
             <input type="text" style="width: 250px;">
-            <input type="button" onclick="findadr()" value="우편번호 찾기">
+            <input type="button" name="zipcode" onclick="findadr()" value="우편번호 찾기">
         </div>
 
         <div id="id">
             <label id="labeltxt">주소 </label>
-            <input type="text" style="width: 250px;">
+            <input type="text" name="address" style="width: 250px;">
         </div>
 
         <div id="id">
