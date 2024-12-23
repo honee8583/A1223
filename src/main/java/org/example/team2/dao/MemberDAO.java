@@ -5,6 +5,7 @@ import org.example.team2.bean.MemberBean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class MemberDAO {
     Connection conn;
@@ -97,6 +98,40 @@ public class MemberDAO {
         }
     }
 
+    public MemberBean useLogin(String id, String password) {
+        conn = DBConnectionDAO.getConnection();
+        System.out.println("useLogin " + id + ", " + password);
+
+        try {
+
+            String sql = "SELECT * FROM Member WHERE id = ? AND password = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+            pstmt.setString(2, password);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                // 로그인 성공 시 MemberBean에 사용자 정보 저장
+                MemberBean member = new MemberBean();
+                member.setId(rs.getString("id"));
+                member.setName(rs.getString("name"));
+                member.setPassword(rs.getString("password"));
+
+                // 다른 정보들도 추가적으로 담을 수 있습니다.
+
+                return member;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // 리소스 닫기
+            DBConnectionDAO.closeConnection(conn, pstmt, rs);
+        }
+
+        // 로그인 실패 시 null 반환
+        return null;
+
+
     public void updatePwd(String id, String password) {
         conn = DBConnectionDAO.getConnection();
         String sql = "update Member set password = ? where id = ?";
@@ -110,6 +145,7 @@ public class MemberDAO {
         } finally {
             DBConnectionDAO.closeConnection(conn, pstmt);
         }
+
     }
 
 }
