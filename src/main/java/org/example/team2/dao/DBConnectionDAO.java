@@ -13,9 +13,9 @@ public class DBConnectionDAO {
     public static Connection getConnection() {
         Connection conn = null;
         try {
-            Context initContext = new InitialContext();  // context.xml의 DB정보를 불러옴
+            Context initContext = new InitialContext();
             Context envContext = (Context) initContext.lookup("java:/comp/env");
-            DataSource ds = (DataSource) envContext.lookup("jdbc/jsp"); // DB 리소스 이름, DataSource를 통해 DB연결을 관리한다.
+            DataSource ds = (DataSource) envContext.lookup("jdbc/a1223");
             conn = ds.getConnection();
         } catch (Exception e) {
             e.printStackTrace();
