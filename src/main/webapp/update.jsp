@@ -54,7 +54,7 @@
     MemberDAO memberDAO = new MemberDAO();
     MemberBean memberBean = memberDAO.selectMember(id);
 %>
-<form>
+<form action="updateProc.jsp">
     <h2>회원수정</h2>
     <div id="main">
         <div id="id">
