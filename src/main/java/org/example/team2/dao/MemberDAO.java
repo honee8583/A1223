@@ -68,12 +68,14 @@ public class MemberDAO {
         conn = DBConnectionDAO.getConnection();
 
         try {
-            String sql = "update member set password=?, email=?, zipcode=?, address=? where id=?";
+            String sql = "update member set email=?, zipcode=?, address=?, hobby=?, job=? where id=?";
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, memberBean.getPassword());
-            pstmt.setString(2, memberBean.getEmail());
-            pstmt.setString(4, memberBean.getZipcode());
-            pstmt.setString(5, memberBean.getId());
+            pstmt.setString(1, memberBean.getEmail());
+            pstmt.setString(2, memberBean.getZipcode());
+            pstmt.setString(3, memberBean.getAddress());
+            pstmt.setString(4, memberBean.getHobby());
+            pstmt.setString(5, memberBean.getJob());
+            pstmt.setString(6, memberBean.getId());
             pstmt.executeUpdate();
             DBConnectionDAO.closeConnection(conn, pstmt);
         } catch (Exception e) {
