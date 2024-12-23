@@ -46,7 +46,7 @@
 
     <h2>비밀번호 수정</h2>
     <form name="pwdUpdate" action="pwdUpdateProc.jsp" onsubmit="return check()">
-        <input type="text" name="id" hidden />
+        <input type="text" name="id" value="<%=request.getParameter("id")%>" hidden />
         새 비밀번호 <input type="password" name="password" /> <br>
         비밀번호 확인 <input type="password" name="pwdCheck" /> <br>
         <div class="btn">
