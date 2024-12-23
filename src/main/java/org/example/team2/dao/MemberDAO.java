@@ -146,4 +146,28 @@ public class MemberDAO {
             DBConnectionDAO.closeConnection(conn, pstmt);
         }
     }
+
+    public boolean checkPwd(String id, String password) {
+        conn = DBConnectionDAO.getConnection();
+        String sql = "select password from Member where id = ?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+            rs = pstmt.executeQuery();
+
+            String savedPwd = "";
+            if (rs.next()) {
+                savedPwd = rs.getString("password");
+            }
+
+            if (savedPwd != null && !savedPwd.isEmpty()) {
+                return password.equals(savedPwd);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBConnectionDAO.closeConnection(conn, pstmt);
+        }
+        return false;
+    }
 }
