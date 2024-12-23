@@ -95,4 +95,19 @@ public class MemberDAO {
         }
     }
 
+    public void updatePwd(String id, String password) {
+        conn = DBConnectionDAO.getConnection();
+        String sql = "update Member set password = ? where id = ?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, password);
+            pstmt.setString(2, id);
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBConnectionDAO.closeConnection(conn, pstmt);
+        }
+    }
+
 }
