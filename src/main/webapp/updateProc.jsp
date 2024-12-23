@@ -6,8 +6,10 @@
     String[] hobby = request.getParameterValues("hobby");
     String str = "";
 
-    for (int i = 0; i < hobby.length; i++) {
-        str += hobby[i] + " ";
+    if (hobby != null && hobby.length > 0) {
+        for (int i = 0; i < hobby.length; i++) {
+            str += hobby[i] + " ";
+        }
     }
 %>
 
@@ -15,15 +17,18 @@
     <jsp:setProperty name="memberbean" property="*"/>
 </jsp:useBean>
 
-<%
-    memberbean.setHobby(str);
-
-    MemberDAO memberDAO = new MemberDAO();
-    memberDAO.updateMember(memberbean);
-
-    response.sendRedirect("index.jsp");
-%>
-
 <script>
     alert("회원정보가 수정되었습니다");
 </script>
+
+<%
+    memberbean.setHobby(str);
+    String id = request.getParameter("id");
+
+    MemberDAO memberDAO = new MemberDAO();
+    memberDAO.updateMember(memberbean);
+    System.out.println(memberbean);
+
+    response.sendRedirect("index.jsp?id=" + id);
+%>
+

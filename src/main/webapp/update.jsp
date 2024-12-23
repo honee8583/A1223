@@ -54,7 +54,7 @@
     MemberDAO memberDAO = new MemberDAO();
     MemberBean memberBean = memberDAO.selectMember(id);
 %>
-<form action="updateProc.jsp">
+<form action="updateProc.jsp?id=<%=memberBean.getId()%>" method="post">
     <h2>회원수정</h2>
     <div id="main">
         <div id="id">
@@ -120,6 +120,7 @@
         <div id="btn">
             <input type="submit" class="btn btn-success" value="회원수정">
             <input type="reset" class="btn btn-danger" value="다시 작성">
+            <input type="button" class="btn btn-success" value="취소" onclick="location.href='index.jsp?id=<%=memberBean.getId()%>'">
         </div>
     </div>
 </form>
