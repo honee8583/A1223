@@ -1,0 +1,10 @@
+<Context>
+    <Resource
+            name="jdbc/jsp"
+            auth="Container"
+            type="javax.sql.DataSource"
+            username="root"
+            password="root1234"
+            driverClassName="com.mysql.cj.jdbc.Driver"
+            url="jdbc:mysql://localhost:3306/member"/>
+</Context>
