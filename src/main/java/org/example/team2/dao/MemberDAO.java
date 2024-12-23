@@ -15,7 +15,7 @@ public class MemberDAO {
     public void insertMember(MemberBean memberBean) {
         conn = DBConnectionDAO.getConnection();
         try {
-            String sql = "insert into member values(?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into Member values(?,?,?,?,?,?,?,?,?,?)";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, memberBean.getId());
             pstmt.setString(2, memberBean.getPassword());
@@ -40,7 +40,7 @@ public class MemberDAO {
         MemberBean memberBean = new MemberBean();
 
         try {
-            String sql = "select * from member where id = ?";
+            String sql = "select * from Member where id = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             rs = pstmt.executeQuery();
@@ -49,7 +49,7 @@ public class MemberDAO {
                 memberBean.setId(rs.getString("id"));
                 memberBean.setPassword(rs.getString("password"));
                 memberBean.setName(rs.getString("name"));
-                memberBean.setGender((Character) rs.getObject("gender"));
+                memberBean.setGender(String.valueOf(rs.getObject("gender")).charAt(0));
                 memberBean.setEmail(rs.getString("email"));
                 memberBean.setBirth(rs.getString("birth"));
                 memberBean.setZipcode(rs.getString("zipcode"));
@@ -87,7 +87,7 @@ public class MemberDAO {
         conn = DBConnectionDAO.getConnection();
 
         try {
-            String sql = "delete from member where id = ?";
+            String sql = "delete from Member where id = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             pstmt.executeUpdate();
