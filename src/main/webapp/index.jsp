@@ -43,7 +43,6 @@
 <body>
 
 <%
-
         HttpSession userSession = request.getSession(false);  // 세션이 없으면 null 반환
         if (userSession == null || userSession.getAttribute("id") == null) {
 %>
@@ -83,7 +82,7 @@
 
         <div id="btn">
             <a href="logout.jsp"><input type="button" value="로그아웃"></a>
-            <a href="updata.jsp"><input type="button" value="회원정보수정"></a>
+            <a href="update.jsp"><input type="button" value="회원정보수정"></a>
         </div>
 <%
     }

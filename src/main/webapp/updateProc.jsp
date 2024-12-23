@@ -23,11 +23,12 @@
 
 <%
     memberbean.setHobby(str);
-    String id = request.getParameter("id");
+    String id = (String) session.getAttribute("id");
+    memberbean.setId(id);
 
     MemberDAO memberDAO = new MemberDAO();
     memberDAO.updateMember(memberbean);
 
-    response.sendRedirect("index.jsp?id=" + id);
+    response.sendRedirect("index.jsp");
 %>
 

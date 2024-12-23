@@ -50,7 +50,7 @@
 </head>
 <body>
 <%
-    String id = request.getParameter("id");
+    String id = (String) session.getAttribute("id");
     MemberDAO memberDAO = new MemberDAO();
     MemberBean memberBean = memberDAO.selectMember(id);
 %>

@@ -130,7 +130,7 @@ public class MemberDAO {
 
         // 로그인 실패 시 null 반환
         return null;
-
+    }
 
     public void updatePwd(String id, String password) {
         conn = DBConnectionDAO.getConnection();
@@ -145,7 +145,5 @@ public class MemberDAO {
         } finally {
             DBConnectionDAO.closeConnection(conn, pstmt);
         }
-
     }
-
 }
