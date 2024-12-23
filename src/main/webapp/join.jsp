@@ -138,7 +138,7 @@
         </div>
         <div id="btn">
             <input type="submit" value="회원가입">
-            <input type="reset" value="다시 작성">
+            <input type="button" onclick="location.href='index.jsp'" value="취소">
         </div>
     </div>
 </form>
