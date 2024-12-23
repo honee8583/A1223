@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MemberBean {
     private String id;
-    private String pwd;
+    private String password;
     private String name;
     private char gender;
     private String email;
