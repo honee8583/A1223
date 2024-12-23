@@ -83,8 +83,8 @@
 
         <div id="id">
             <label id="labeltxt">우편번호 </label>
-            <input type="text" style="width: 250px;">
-            <input type="button" name="zipcode" onclick="findadr()" value="우편번호 찾기">
+            <input type="text" name="zipcode" style="width: 250px;">
+            <input type="button" onclick="findadr()" value="우편번호 찾기">
         </div>
 
         <div id="id">
