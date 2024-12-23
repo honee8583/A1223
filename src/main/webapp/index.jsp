@@ -15,8 +15,9 @@
     <input type="radio" name="gender" value="F">여<br>
     <label for="birth">생년월일<input type="text" name="birth" id="birth"></label> <span>ex)900323</span><br>
     <label for="email">이메일<input type="email" name="email" id="email"></label><br>
-    <label for="zipcode">우편번호<input type="text" name="zipcode" id="zipcode"></label> <button>우편번호 찾기</button>
+    <label for="zipcode">우편번호<input type="text" name="zipcode" id="zipcode"></label> <button>우편번호 찾기</button><br>
     <label for="address">주소<input type="text" name="address" id="address"></label><br>
+
 
 
 
