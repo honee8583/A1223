@@ -113,6 +113,7 @@ public class MemberDAO {
                 // 로그인 성공 시 MemberBean에 사용자 정보 저장
                 MemberBean member = new MemberBean();
                 member.setId(rs.getString("id"));
+                member.setName(rs.getString("name"));
                 member.setPassword(rs.getString("password"));
 
                 // 다른 정보들도 추가적으로 담을 수 있습니다.

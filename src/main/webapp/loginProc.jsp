@@ -9,6 +9,7 @@
 </head>
 <body>
 <%
+    response.setCharacterEncoding("utf-8");
     String id = request.getParameter("id");
     String password = request.getParameter("password");
 
@@ -23,7 +24,8 @@
 
         if (member != null) {
             // 로그인 성공 시 세션에 사용자 정보 저장
-            session.setAttribute("member", member);
+            session.setAttribute("id", member.getId());
+            session.setAttribute("name", member.getName());
 
             // 로그인 후 메인 페이지로 리다이렉트
             response.sendRedirect("index.jsp");

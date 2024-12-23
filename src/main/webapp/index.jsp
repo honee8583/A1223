@@ -75,9 +75,11 @@
         String id = (String) session.getAttribute("id");
         String name = (String) session.getAttribute("name");
 
-%>
 
-        <h2><%= name %>님 환영합니다.</h2>
+%>
+         <center>
+        <h2><%=name %>님 환영합니다.</h2>
+        <%=id %>
 
         <div id="btn">
             <a href="logout.jsp"><input type="button" value="로그아웃"></a>
