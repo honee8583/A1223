@@ -35,6 +35,35 @@ public class MemberDAO {
         }
     }
 
+    public MemberBean selectMember(String id) {
+        DBConnectionDAO.getConnection();
+        MemberBean memberBean = new MemberBean();
+
+        try {
+            String sql = "select * from member where id = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                memberBean.setId(rs.getString("id"));
+                memberBean.setPassword(rs.getString("password"));
+                memberBean.setName(rs.getString("name"));
+                memberBean.setGender((Character) rs.getObject("gender"));
+                memberBean.setEmail(rs.getString("email"));
+                memberBean.setBirth(rs.getString("birth"));
+                memberBean.setZipcode(rs.getString("zipcode"));
+                memberBean.setAddress(rs.getString("address"));
+                memberBean.setHobby(rs.getString("hobby"));
+                memberBean.setJob(rs.getString("job"));
+            }
+            DBConnectionDAO.closeConnection(conn, pstmt);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return memberBean;
+    }
+
     public void updateMember(MemberBean memberBean) {
         DBConnectionDAO.getConnection();
 
