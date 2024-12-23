@@ -13,7 +13,7 @@ public class MemberDAO {
 
 
     public void insertMember(MemberBean memberBean) {
-        DBConnectionDAO.getConnection();
+        conn = DBConnectionDAO.getConnection();
         try {
             String sql = "insert into member values(?,?,?,?,?,?,?,?,?,?)";
             pstmt = conn.prepareStatement(sql);
@@ -36,7 +36,7 @@ public class MemberDAO {
     }
 
     public MemberBean selectMember(String id) {
-        DBConnectionDAO.getConnection();
+        conn = DBConnectionDAO.getConnection();
         MemberBean memberBean = new MemberBean();
 
         try {
@@ -65,7 +65,7 @@ public class MemberDAO {
     }
 
     public void updateMember(MemberBean memberBean) {
-        DBConnectionDAO.getConnection();
+        conn = DBConnectionDAO.getConnection();
 
         try {
             String sql = "update member set password=?, email=?, birth=?, zipcode=?, address=? where id=?";
@@ -84,7 +84,7 @@ public class MemberDAO {
     }
 
     public void deleteMember(String id) {
-        DBConnectionDAO.getConnection();
+        conn = DBConnectionDAO.getConnection();
 
         try {
             String sql = "delete from member where id = ?";
